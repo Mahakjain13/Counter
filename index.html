@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+      body {
+          background-image: url(./bg_img.jpg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15%;
+        background-color: hsl(110, 21%, 49%);
+      }
+      .counter {
+        font-size: 100px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      button {
+        font-size: 16px;
+        padding: 10px 20px;
+        margin: 0 10px;
+        background-color: rgb(204, 74, 78);
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .container {
+        display: flex;
+        padding: 20px;
+        width: fit-content;
+        flex-direction: column;
+        border-radius: 10px;
+        background-color: #0a0a0a;
+      }
+
+      .button-group {
+        display: flex;
+        justify-content: center;
+      }
+
+      .counter.positive {
+        color: #47a831;
+      }
+
+      .counter.negative {
+        color: red;
+      }
+
+      h1 {
+          color: white; 
+          font-weight: bold;
+          text-align: center;
+          font: italic bold 20px/30px, serif;
+          font-size: 30px;
+      }
+      
+    </style>
+    
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+   
+      let App = () => {
+        let [count, setCount] = React.useState(0);
+
+        let increment = () => {
+          setCount(count + 1);
+        };
+
+        let decrement = () => {
+          setCount(count - 1);
+        };
+
+        return (
+            
+          <div className="container">
+            <h1>Counter App</h1>
+            <div className={`counter ${count < 0 ? 'negative' : 'positive'}`}>{count}</div>
+            <div className="button-group">
+              <button style={{ background: 'red' }} onClick={decrement}>
+                Decrement
+              </button>
+              <button style={{ background: 'green' }} onClick={increment}>
+                Increment
+              </button>
+            </div>
+          </div>
+        );
+      };
+
+      ReactDOM.render(<App/>, document.getElementById('root'));
+    </script>
+    
+</body>
+</html>
